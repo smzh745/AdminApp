@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Admin App</string>
+    <string name="login">Login</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="please_fill_field">Please Fill the field</string>
+    <string name="authenticating_user">Authenticating user…</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="all_workers">All Workers</string>
+    <string name="logout">Logout</string>
+    <string name="change_password">Change Password</string>
+    <string name="enter_old_password">Enter Old Password</string>
+    <string name="update">Update</string>
+    <string name="enter_new_password">Enter New Password</string>
+    <string name="cancel">Cancel</string>
+    <string name="updating">Updating..</string>
+    <string name="loading">Loading..</string>
+    <string name="no_worker_found">No Worker Found!</string>
+    <string name="view">View</string>
+    <string name="status">Status:</string>
+    <string name="user_profile_picture">User Profile Picture</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_number">Enter Number</string>
+    <string name="enter_cnic_number">Enter CNIC Number</string>
+    <string name="cnic_image">CNIC Image</string>
+</resources>

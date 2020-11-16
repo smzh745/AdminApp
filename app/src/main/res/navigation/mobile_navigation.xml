@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/workerFragment">
+
+    <fragment
+        android:id="@+id/workerFragment"
+        android:name="home.service.appmanage.online.adminapp.fragments.WorkerFragment"
+        android:label="@string/all_workers"
+        tools:layout="@layout/fragment_worker" />
+    <fragment
+        android:id="@+id/viewWorkerDetailsFragment"
+        android:name="home.service.appmanage.online.adminapp.fragments.ViewWorkerDetailsFragment"
+        tools:layout="@layout/fragment_view_worker_details">
+        <argument
+            android:name="typed"
+            app:argType="home.service.appmanage.online.adminapp.models.Workers" />
+        <argument
+            android:name="position"
+            app:argType="integer" />
+    </fragment>
+</navigation>
