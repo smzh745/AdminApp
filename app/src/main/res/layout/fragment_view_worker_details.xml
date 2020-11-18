@@ -190,6 +190,17 @@
                     android:contentDescription="@string/app_name"
                     android:focusable="true" />
             </LinearLayout>
+            <Spinner
+                android:id="@+id/workerType"
+                android:layout_width="@dimen/_240sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:background="@drawable/gradient_spinner"
+                android:elevation="@dimen/_5sdp"
+                android:gravity="center"
+                android:overScrollMode="never"
+                android:scrollbars="none" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/register"
@@ -205,7 +216,6 @@
                 app:backgroundTint="@color/colorPrimary"
                 app:cornerRadius="@dimen/_15sdp"
                 app:strokeColor="@android:color/black" />
-
 
         </LinearLayout>
     </ScrollView>

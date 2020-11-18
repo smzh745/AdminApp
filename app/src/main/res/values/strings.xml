@@ -25,4 +25,9 @@
     <string name="enter_number">Enter Number</string>
     <string name="enter_cnic_number">Enter CNIC Number</string>
     <string name="cnic_image">CNIC Image</string>
+    <string-array name="activate_Array">
+        <item>Choose</item>
+        <item>Activate</item>
+        <item>Deactivate</item>
+    </string-array>
 </resources>

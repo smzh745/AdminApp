@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.android.volley.RequestQueue
@@ -23,6 +24,12 @@ open class BaseFragment : Fragment() {
 
 
     }
+
+    fun showToast(toast: String) {
+        Toast.makeText(requireContext(), toast, Toast.LENGTH_LONG).show()
+
+    }
+
     //TODO: show dialog
     fun showDialog(message: String) {
         dialog = setProgressDialog(requireActivity(), message)
