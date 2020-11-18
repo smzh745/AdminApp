@@ -18,7 +18,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".activities.HomeActivity"></activity>
+        <activity
+            android:name=".activities.PreviewActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.HomeActivity" />
         <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="portrait">

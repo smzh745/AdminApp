@@ -1,5 +1,6 @@
 package home.service.appmanage.online.adminapp.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import home.service.appmanage.online.adminapp.R
+import home.service.appmanage.online.adminapp.activities.PreviewActivity
 import home.service.appmanage.online.adminapp.models.Workers
 import home.service.appmanage.online.adminapp.utils.Constants.UPLOAD_DIRECTORY
 import kotlinx.android.synthetic.main.fragment_view_worker_details.view.*
@@ -48,7 +50,20 @@ class ViewWorkerDetailsFragment : BaseFragment() {
         root!!.register.setOnClickListener {
             updateData()
         }
+        root!!.imageLayoutProfile.setOnClickListener {
+            openPreview(serviceList!![position].profilePic)
+        }
+        root!!.imageLayout.setOnClickListener {
+            openPreview(serviceList!![position].cnicImage)
+
+        }
         return root
+    }
+
+    private fun openPreview(s: String) {
+        val intent = Intent(requireContext(), PreviewActivity::class.java)
+        intent.putExtra("path", s)
+        startActivity(intent)
     }
 
     private fun updateData() {
@@ -56,7 +71,6 @@ class ViewWorkerDetailsFragment : BaseFragment() {
         if (workerType == "Choose") {
             showToast("Choose the Option")
         } else {
-
         }
     }
 
