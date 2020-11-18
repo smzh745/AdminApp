@@ -18,7 +18,6 @@ import home.service.appmanage.online.adminapp.models.Workers
 import home.service.appmanage.online.adminapp.utils.Constants.UPDATE_ACTIVE_URL
 import home.service.appmanage.online.adminapp.utils.Constants.UPLOAD_DIRECTORY
 import home.service.appmanage.online.adminapp.utils.RequestHandler
-import home.service.appmanage.online.adminapp.utils.SharedPrefUtils
 import kotlinx.android.synthetic.main.fragment_view_worker_details.view.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -46,7 +45,7 @@ class ViewWorkerDetailsFragment : BaseFragment() {
     ): View? {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_view_worker_details, container, false)
-        try {
+//        try {
             serviceList = requireArguments().getParcelableArrayList("typed")
             position = requireArguments().getInt("position")
             Glide.with(requireActivity())
@@ -60,16 +59,16 @@ class ViewWorkerDetailsFragment : BaseFragment() {
             root!!.number.setText(serviceList!![position].phoneNum)
             root!!.cnic_number.setText(serviceList!![position].cnicNum)
 
-            root!!.imageLayoutProfile.setOnClickListener {
+            root!!.imagePickProfile.setOnClickListener {
                 openPreview(serviceList!![position].profilePic)
             }
-            root!!.imageLayout.setOnClickListener {
+            root!!.imagePick.setOnClickListener {
                 openPreview(serviceList!![position].cnicImage)
 
             }
-        } catch (e: Exception) {
+      /*  } catch (e: Exception) {
             e.printStackTrace()
-        }
+        }*/
         setSpinner(R.array.activate_Array, root!!.workerType)
         root!!.register.setOnClickListener {
             updateData(serviceList?.get(position)!!)

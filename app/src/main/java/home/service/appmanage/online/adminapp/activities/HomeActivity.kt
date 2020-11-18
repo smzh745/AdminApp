@@ -42,7 +42,7 @@ class HomeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        if (SharedPrefUtils.getBooleanData(this@HomeActivity, "isLoggedIn")) {
+        if (!SharedPrefUtils.getBooleanData(this@HomeActivity, "isLoggedIn")) {
             openActivity(MainActivity())
         }
         setSupportActionBar(toolbar)
