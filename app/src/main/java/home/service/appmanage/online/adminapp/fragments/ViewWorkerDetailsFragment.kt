@@ -46,29 +46,29 @@ class ViewWorkerDetailsFragment : BaseFragment() {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_view_worker_details, container, false)
 //        try {
-            serviceList = requireArguments().getParcelableArrayList("typed")
-            position = requireArguments().getInt("position")
-            Glide.with(requireActivity())
-                .load(UPLOAD_DIRECTORY + serviceList!![position].profilePic)
-                .into(root!!.imagePickProfile)
-            Glide.with(requireActivity())
-                .load(UPLOAD_DIRECTORY + serviceList!![position].cnicImage)
-                .into(root!!.imagePick)
-            root!!.name1.setText(serviceList!![position].name)
-            root!!.email1.setText(serviceList!![position].email)
-            root!!.number.setText(serviceList!![position].phoneNum)
-            root!!.cnic_number.setText(serviceList!![position].cnicNum)
+        serviceList = requireArguments().getParcelableArrayList("typed")
+        position = requireArguments().getInt("position")
+        Glide.with(requireActivity())
+            .load(UPLOAD_DIRECTORY + serviceList!![position].profilePic)
+            .into(root!!.imagePickProfile)
+        Glide.with(requireActivity())
+            .load(UPLOAD_DIRECTORY + serviceList!![position].cnicImage)
+            .into(root!!.imagePick)
+        root!!.name1.setText(serviceList!![position].name)
+        root!!.email1.setText(serviceList!![position].email)
+        root!!.number.setText(serviceList!![position].phoneNum)
+        root!!.cnic_number.setText(serviceList!![position].cnicNum)
 
-            root!!.imagePickProfile.setOnClickListener {
-                openPreview(serviceList!![position].profilePic)
-            }
-            root!!.imagePick.setOnClickListener {
-                openPreview(serviceList!![position].cnicImage)
+        root!!.imagePickProfile.setOnClickListener {
+            openPreview(serviceList!![position].profilePic)
+        }
+        root!!.imagePick.setOnClickListener {
+            openPreview(serviceList!![position].cnicImage)
 
-            }
-      /*  } catch (e: Exception) {
-            e.printStackTrace()
-        }*/
+        }
+        /*  } catch (e: Exception) {
+              e.printStackTrace()
+          }*/
         setSpinner(R.array.activate_Array, root!!.workerType)
         root!!.register.setOnClickListener {
             updateData(serviceList?.get(position)!!)
@@ -85,13 +85,17 @@ class ViewWorkerDetailsFragment : BaseFragment() {
     private fun updateData(workers: Workers) {
         val workerType: String = root!!.workerType.selectedItem.toString()
         var isActivate = false
+        var status: String = ""
         if (workerType == "Choose") {
             showToast("Choose the Option")
         } else {
             if (workerType == "Activate") {
                 isActivate = true
+                status="activated"
             } else if (workerType == "Deactivate") {
                 isActivate = false
+                status="deactivate"
+
             }
             showDialog(getString(R.string.updating))
             val stringRequest: StringRequest =
@@ -130,6 +134,8 @@ class ViewWorkerDetailsFragment : BaseFragment() {
                             HashMap()
                         params["wid"] = workers.wId
                         params["isActivate"] = isActivate.toString()
+                        params["token"] = workers.token
+                        params["status"] = workerType
 
                         return params
                     }
@@ -140,7 +146,7 @@ class ViewWorkerDetailsFragment : BaseFragment() {
         }
     }
 
-    fun setSpinner(array: Int, spinner: Spinner) {
+    private fun setSpinner(array: Int, spinner: Spinner) {
         // Create an ArrayAdapter using the string array and a default spinner layout
         val adapter = ArrayAdapter.createFromResource(
             requireContext(),

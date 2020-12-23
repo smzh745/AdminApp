@@ -87,7 +87,8 @@ class WorkerFragment : BaseFragment() {
                                 jsonObject.getString("cnicnumber"),
                                 jsonObject.getString("cnicnumberimage"),
                                 jsonObject.getBoolean("isActivated"),
-                                jsonObject.getString("created_at")
+                                jsonObject.getString("created_at"),
+                                jsonObject.getString("token")
                             )
                         )
 

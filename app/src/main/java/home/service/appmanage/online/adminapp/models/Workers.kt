@@ -15,5 +15,5 @@ data class Workers(
     val cnicNum: String,
     val cnicImage: String,
     val isActivated: Boolean,
-    val createdAt: String
+    val createdAt: String, val token: String
 ) : Parcelable
