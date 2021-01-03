@@ -58,6 +58,16 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 )
 
 //                }
+            } else if (messageTitle.equals("new_driver", true)) {
+                sendNotificationMsg(
+                    messageBody.toString(),
+                    rand(1, 100),
+                    action,
+                    data,
+                    "worker"
+                )
+
+//                }
             }
 
         }
