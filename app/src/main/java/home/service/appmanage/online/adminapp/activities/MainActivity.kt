@@ -19,17 +19,21 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        if (SharedPrefUtils.getBooleanData(this@MainActivity, "isLoggedIn")) {
-            openActivity(HomeActivity())
-        }
-        login.setOnClickListener {
-            if (password.text.isNullOrEmpty() ||
-                email.text.isNullOrEmpty()
-            ) {
-                showToast(getString(R.string.please_fill_field))
-            } else {
-                loginAdmin()
+        try {
+            if (SharedPrefUtils.getBooleanData(this@MainActivity, "isLoggedIn")) {
+                openActivity(HomeActivity())
             }
+            login.setOnClickListener {
+                if (password.text.isNullOrEmpty() ||
+                    email.text.isNullOrEmpty()
+                ) {
+                    showToast(getString(R.string.please_fill_field))
+                } else {
+                    loginAdmin()
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 

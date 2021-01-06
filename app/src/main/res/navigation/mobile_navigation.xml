@@ -21,4 +21,20 @@
             android:name="position"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/allDriverFragments"
+        android:name="home.service.appmanage.online.adminapp.fragments.AllDriverFragments"
+        android:label="@string/all_drivers"
+        tools:layout="@layout/fragment_all_driver_fragments" />
+    <fragment
+        android:id="@+id/viewDriverFragment"
+        android:name="home.service.appmanage.online.adminapp.fragments.ViewDriverFragment"
+        tools:layout="@layout/fragment_view_driver">
+        <argument
+            android:name="typed"
+            app:argType="home.service.appmanage.online.adminapp.models.Workers" />
+        <argument
+            android:name="position"
+            app:argType="integer" />
+    </fragment>
 </navigation>

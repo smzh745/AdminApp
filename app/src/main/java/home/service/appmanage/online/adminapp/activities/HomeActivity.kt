@@ -10,6 +10,7 @@ import android.view.View
 import android.view.Window
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -45,6 +46,7 @@ class HomeActivity : BaseActivity() {
         if (!SharedPrefUtils.getBooleanData(this@HomeActivity, "isLoggedIn")) {
             openActivity(MainActivity())
         }
+
         setSupportActionBar(toolbar)
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         val navHostFragment =
@@ -55,6 +57,7 @@ class HomeActivity : BaseActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.workerFragment,
+                R.id.allDriverFragments,
                 R.id.change_pass,
                 R.id.logout
             ), drawer_layout
@@ -78,6 +81,9 @@ class HomeActivity : BaseActivity() {
         headerView = navigationView.getHeaderView(0)
         headerView!!.name.text = SharedPrefUtils.getStringData(this@HomeActivity, "name")
         headerView!!.email.text = SharedPrefUtils.getStringData(this@HomeActivity, "email")
+        if (intent.getStringExtra("type").equals("driver", true)) {
+            findNavController(R.id.nav_host_fragment).navigate(R.id.allDriverFragments  )
+        }
     }
 
     private fun changePasswordDialog() {

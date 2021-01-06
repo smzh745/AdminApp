@@ -9,7 +9,9 @@ object Constants {
     const val UPLOAD_DIRECTORY = ROOT_URL + "uploads/"
     const val LOGIN_URL = ROOT_URL + "adminlogin.php"
     const val FETCH_WORKERS = ROOT_URL + "admin_fetch_wrkers.php"
+    const val FETCH_DRIVERS = ROOT_URL + "admin_fetch_drivers.php"
     const val CHANGE_PASS_URL = ROOT_URL + "adminChangePassword.php"
     const val UPDATE_ACTIVE_URL = ROOT_URL + "update_activate_worker.php"
+    const val UPDATE_ACTIVE_DRIVER_URL = ROOT_URL + "update_activate_driver.php"
     const val UPDATE_ADMIN_TOKEN_URL = ROOT_URL + "admin_token_update.php"
 }
