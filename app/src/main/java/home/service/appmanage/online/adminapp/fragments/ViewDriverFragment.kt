@@ -14,7 +14,7 @@ import com.android.volley.toolbox.StringRequest
 import com.bumptech.glide.Glide
 import home.service.appmanage.online.adminapp.R
 import home.service.appmanage.online.adminapp.activities.PreviewActivity
-import home.service.appmanage.online.adminapp.models.Workers
+import home.service.appmanage.online.adminapp.models.Drivers
 import home.service.appmanage.online.adminapp.utils.Constants.UPDATE_ACTIVE_DRIVER_URL
 import home.service.appmanage.online.adminapp.utils.Constants.UPLOAD_DIRECTORY
 import home.service.appmanage.online.adminapp.utils.RequestHandler
@@ -23,10 +23,12 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.util.*
 
-@Suppress("SameParameterValue")
+@Suppress("SameParameterValue", "ASSIGNED_BUT_NEVER_ACCESSED_VARIABLE", "UNUSED_VALUE",
+    "LocalVariableName"
+)
 class ViewDriverFragment : BaseFragment() {
 
-    private var serviceList: ArrayList<Workers>? = null
+    private var serviceList: ArrayList<Drivers>? = null
     private var position: Int = 0
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,6 +41,7 @@ class ViewDriverFragment : BaseFragment() {
             e.printStackTrace()
         }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,16 +56,37 @@ class ViewDriverFragment : BaseFragment() {
         Glide.with(requireActivity())
             .load(UPLOAD_DIRECTORY + serviceList!![position].cnicImage)
             .into(root!!.imagePick)
+        Glide.with(requireActivity())
+            .load(UPLOAD_DIRECTORY + serviceList!![position].carImage)
+            .into(root!!.carImagePick)
+        Glide.with(requireActivity())
+            .load(UPLOAD_DIRECTORY + serviceList!![position].licImage)
+            .into(root!!.licImagePick)
         root!!.name1.setText(serviceList!![position].name)
+        root!!.age1.setText(serviceList!![position].age)
+        root!!.fatherName1.setText(serviceList!![position].fName)
+        root!!.address1.setText(serviceList!![position].address)
         root!!.email1.setText(serviceList!![position].email)
         root!!.number.setText(serviceList!![position].phoneNum)
         root!!.cnic_number.setText(serviceList!![position].cnicNum)
+        root!!.carNum.setText(serviceList!![position].carNumber)
+        root!!.carColor.setText(serviceList!![position].carColor)
+        root!!.carEngine.setText(serviceList!![position].carEngineNum)
+        root!!.licNum.setText(serviceList!![position].licNum)
 
         root!!.imagePickProfile.setOnClickListener {
             openPreview(serviceList!![position].profilePic)
         }
         root!!.imagePick.setOnClickListener {
             openPreview(serviceList!![position].cnicImage)
+
+        }
+        root!!.carImagePick.setOnClickListener {
+            openPreview(serviceList!![position].carImage)
+
+        }
+        root!!.licImagePick.setOnClickListener {
+            openPreview(serviceList!![position].licImage)
 
         }
         /*  } catch (e: Exception) {
@@ -81,19 +105,19 @@ class ViewDriverFragment : BaseFragment() {
         startActivity(intent)
     }
 
-    private fun updateData(workers: Workers) {
+    private fun updateData(workers: Drivers) {
         val workerType: String = root!!.workerType.selectedItem.toString()
         var isActivate = false
-        var status: String = ""
+        var status = ""
         if (workerType == "Choose") {
             showToast("Choose the Option")
         } else {
             if (workerType == "Activate") {
                 isActivate = true
-                status="activated"
+                status = "activated"
             } else if (workerType == "Deactivate") {
                 isActivate = false
-                status="deactivate"
+                status = "deactivate"
 
             }
             showDialog(getString(R.string.updating))
@@ -131,7 +155,7 @@ class ViewDriverFragment : BaseFragment() {
                     override fun getParams(): Map<String, String> {
                         val params: MutableMap<String, String> =
                             HashMap()
-                        params["wid"] = workers.wId
+                        params["wid"] = workers.dId
                         params["isActivate"] = isActivate.toString()
                         params["token"] = workers.token
                         params["status"] = workerType

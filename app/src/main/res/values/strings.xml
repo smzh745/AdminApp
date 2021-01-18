@@ -26,6 +26,15 @@
     <string name="enter_cnic_number">Enter CNIC Number</string>
     <string name="cnic_image">CNIC Image</string>
     <string name="all_drivers">All Drivers</string>
+    <string name="enter_age">Enter Age</string>
+    <string name="enter_father_name">Enter Father Name</string>
+    <string name="enter_address">Enter Address</string>
+    <string name="enter_car_number">Enter Car Number</string>
+    <string name="car_image">Car Image</string>
+    <string name="enter_car_color">Enter Car Color</string>
+    <string name="enter_car_engine_number">Enter Car Engine Number</string>
+    <string name="enter_license_number">Enter License Number</string>
+    <string name="license_image">License Image</string>
     <string-array name="activate_Array">
         <item>Choose</item>
         <item>Activate</item>
