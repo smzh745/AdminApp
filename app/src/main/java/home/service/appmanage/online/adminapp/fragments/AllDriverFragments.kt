@@ -10,6 +10,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import home.service.appmanage.online.adminapp.R
 import home.service.appmanage.online.adminapp.adapters.DriverAdapter
+import home.service.appmanage.online.adminapp.models.Drivers
 import home.service.appmanage.online.adminapp.models.Workers
 import home.service.appmanage.online.adminapp.utils.Constants
 import home.service.appmanage.online.adminapp.utils.Constants.FETCH_DRIVERS
@@ -22,7 +23,7 @@ import kotlin.collections.ArrayList
 import kotlin.collections.set
 
 class AllDriverFragments : BaseFragment() {
-    private var bookList: ArrayList<Workers>? = null
+    private var bookList: ArrayList<Drivers>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,15 +59,24 @@ class AllDriverFragments : BaseFragment() {
                     for (i in 0 until jsonArray.length()) {
                         val jsonObject = jsonArray.getJSONObject(i)
                         bookList!!.add(
-                            Workers(
+                            Drivers(
                                 jsonObject.getString("did"),
                                 jsonObject.getString("profilepic"),
                                 jsonObject.getString("dname"),
-                                jsonObject.getString("email"),
+                                jsonObject.getString("dage"),
+                                jsonObject.getString("father_name"),
                                 jsonObject.getString("address"),
+                                jsonObject.getString("email"),
+                                jsonObject.getString("phone_num"),
                                 jsonObject.getString("type"),
                                 jsonObject.getString("cnic_no"),
                                 jsonObject.getString("cnic_image"),
+                                jsonObject.getString("car_color"),
+                                jsonObject.getString("car_no"),
+                                jsonObject.getString("car_copy_image"),
+                                jsonObject.getString("car_engine_no"),
+                                jsonObject.getString("lic_no"),
+                                jsonObject.getString("lic_image"),
                                 jsonObject.getBoolean("isActivated"),
                                 jsonObject.getString("created_at"),
                                 jsonObject.getString("token")
